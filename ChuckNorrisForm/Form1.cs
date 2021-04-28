@@ -18,14 +18,31 @@ namespace ChuckNorrisForm
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public async Task populateCategories()
         {
-
+            IEnumerable<string> categories = await ChuckNorrisClient.GetCategories();
+            foreach (var list in categories)
+            {
+                categoriesTxt.Items.Add(Convert.ToString(categories));
+            }
         }
 
-        private void generateJokeCmd_Click(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
 
+            Joke joke = new Joke();
+
+            await populateCategories();
+
+            joke.Categories = (IEnumerable<string>)categoriesTxt.SelectedItem;
+        }
+
+        private async void generateJokeCmd_Click(object sender, EventArgs e)
+        {
+            Joke joke = await ChuckNorrisClient.GetRandomJoke();
+
+            jokeIdTxt.Text = joke.Id.ToString();
+            jokeDescriptionTxt.Text = joke.JokeText;
         }
     }
 }
