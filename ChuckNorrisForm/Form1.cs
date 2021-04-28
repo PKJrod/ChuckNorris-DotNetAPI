@@ -23,24 +23,18 @@ namespace ChuckNorrisForm
             IEnumerable<string> categories = await ChuckNorrisClient.GetCategories();
             foreach (var list in categories)
             {
-                categoriesTxt.Items.Add(Convert.ToString(categories));
+                categoriesTxt.Items.Add(list);
             }
         }
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-
-            Joke joke = new Joke();
-
             await populateCategories();
-
-            joke.Categories = (IEnumerable<string>)categoriesTxt.SelectedItem;
         }
 
         private async void generateJokeCmd_Click(object sender, EventArgs e)
         {
-            Joke joke = await ChuckNorrisClient.GetRandomJoke();
-
+            Joke joke = await ChuckNorrisClient.GetCategoryJoke(categoriesTxt.SelectedItem.ToString());
             jokeIdTxt.Text = joke.Id.ToString();
             jokeDescriptionTxt.Text = joke.JokeText;
         }
