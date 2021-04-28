@@ -46,6 +46,7 @@ namespace ChuckNorrisForm
             this.generateJokeCmd.TabIndex = 0;
             this.generateJokeCmd.Text = "Chuck Button";
             this.generateJokeCmd.UseVisualStyleBackColor = true;
+            this.generateJokeCmd.Click += new System.EventHandler(this.generateJokeCmd_Click);
             // 
             // jokeIdTxt
             // 
@@ -59,7 +60,7 @@ namespace ChuckNorrisForm
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(164, 129);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 21);
+            this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Joke ID:";
             // 
@@ -76,7 +77,7 @@ namespace ChuckNorrisForm
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(164, 186);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 21);
+            this.label2.Size = new System.Drawing.Size(76, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Categories";
             // 
@@ -93,7 +94,7 @@ namespace ChuckNorrisForm
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(491, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 21);
+            this.label3.Size = new System.Drawing.Size(67, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "The Joke";
             // 
@@ -111,6 +112,7 @@ namespace ChuckNorrisForm
             this.Controls.Add(this.generateJokeCmd);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
